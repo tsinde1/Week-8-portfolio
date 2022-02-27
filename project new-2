@@ -1,0 +1,89 @@
+#include<iostream>
+#include<string>
+using namespace std;
+//the following line of code defines the Chada tech clock variables//
+int hours12,hours24,minutes,seconds;
+string ampm;
+
+//I then designed a code that will add one hour to the Chada tech clock//
+void addHour() {
+hours12=hours12+1;
+//the next line of code will set the clock and allow the 12 hour clock to determine wether time should be am or pm//
+if(hours12>=12){
+hours12=hours12-12;
+if(ampm=="AM")
+ampm="PM";
+else
+ampm="AM";
+}
+}
+
+//I then designed a code that will add one minute to the Chada tech clock//
+void addMinute() {
+minutes=minutes+1;
+if(minutes>59) {
+minutes = 0;
+addHour();
+}
+}
+
+//the next line of code then adds one second to the clock//
+void assSecond(){
+seconds=seconds+1;
+if(seconds>59) {
+seconds = 0;
+addMinute();
+}
+}
+
+//now I design a main function and keep my maximum variable range of<=59//
+int main() {
+int choice = 0;
+hours12=10;
+minutes=59;
+seconds=58;
+ampm="PM";
+
+//the next line of code then determines the am or pm using the 24 hour clock format//
+if(ampm=="PM") {
+hours24=hours12+12;
+if(hours24>=24){
+hours24=hours-24;
+}
+}
+else {
+hours24=hours12;
+}
+
+//displaying the time in two clock formats//
+cout<<"****************************\t\t****************************\n";
+cout<<"*    12-Hour clock    *\t\t*    24-Hour clock    *\n";
+cout<<"****************************\t\t****************************\n";
+
+//displaying the menu options described in the program requirements//
+cout<<"\n\n****************************\n";
+cout<<"* a=Add one hour    *\n";
+cout<<"* b=Add one minute    *\n";
+cout<<"* c=Add one second    *\n";
+cout<<"* d=Exit program    *\n";
+cout<<"****************************\n";
+cout<<"Choose an option:";
+cin >> choice;
+
+//the code will then follow and execute itself following the menu options diplayed above//
+if(choice==a) {
+addHour();
+}
+else if(choice==b) {
+addMinute();
+}
+else if(choice==c) {
+addSecond ();
+}
+else if(choice==d) {
+cout<<"Exit program";//user input = exit?//
+break;//then end program//
+
+}
+}
+}
